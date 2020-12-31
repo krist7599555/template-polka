@@ -1,0 +1,46 @@
+{
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2021
+  },
+  "extends": [
+    "plugin:@typescript-eslint/recommended"
+  ],
+  "plugins": [
+    "simple-import-sort"
+  ],
+  "rules": {
+    "semi": ["warn"],
+    "semi-style": ["warn", "last"],
+    "keyword-spacing": ["warn", { "before": true, "after": true }],
+    "comma-dangle": ["warn", {
+      "arrays": "never",
+      "objects": "always",
+      "imports": "never",
+      "exports": "never",
+      "functions": "never"
+    }],
+    "brace-style": ["warn", "1tbs", { "allowSingleLine": true }],
+    "semi-spacing": ["warn", {"before": false, "after": true}],
+    "block-spacing": ["warn", "always"],
+    "sort-imports": "off",
+    "import/order": "off",
+    "simple-import-sort/imports": "warn",
+    "simple-import-sort/exports": "warn",
+    "key-spacing": ["warn", {
+      "multiLine": {
+        "beforeColon": false,
+        "afterColon": true
+      },
+      "align": {
+          "beforeColon": false,
+          "afterColon": true,
+          "on": "value"
+      }
+    }],
+    "@typescript-eslint/no-empty-function": ["off"],
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "^_", "caughtErrors": "none", "caughtErrorsIgnorePattern": "^_" }],
+    "@typescript-eslint/ban-ts-comment": ["off"],
+    "@typescript-eslint/no-explicit-any": ["off"]
+  }
+}

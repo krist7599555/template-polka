@@ -1,22 +1,28 @@
-import polka from 'polka';
 import { json } from 'body-parser';
-import api from "./endpoint";
+import polka from 'polka';
+
 import { rethink_pool } from './database/connection';
+import api from "./endpoint";
 import { wait_promise_to_resolve } from './middleware';
 
-const BASE_URL = process.env.BASE_URL ?? '/'
+const BASE_URL = process.env.BASE_URL ?? '/';
 
-const app = polka({
-  onError(err, req, res, next) {
-
-  },
-  onNoMatch(req, res) {
-    res.statusCode = 404
+polka({
+  onError(err, req, res) {
+    res.statusCode = 500;
     res.end(JSON.stringify({
       pattern: req.path,
-      message: 'pattern is not match any route'
-    }))
-  }
+      message: err.message,
+      error:   err,
+    }));
+  },
+  onNoMatch(req, res) {
+    res.statusCode = 404;
+    res.end(JSON.stringify({
+      pattern: req.path,
+      message: 'pattern is not match any route',
+    }));
+  },
 })
   .use(wait_promise_to_resolve(rethink_pool()))
   .use(json())

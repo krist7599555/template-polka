@@ -4,14 +4,14 @@ const get = endpoint({
   method: "GET",
   async handler() {
     return {
-      message: 'ok'
-    }
-  }
-})
+      message: 'ok',
+    };
+  },
+});
 
 register_endpoint({
   pattern: '/schools',
   methods: {
-    GET: get
-  }
-})
+    GET: get,
+  },
+});

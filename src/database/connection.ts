@@ -1,15 +1,14 @@
-import { Middleware } from 'polka'
-import { r } from 'rethinkdb-ts'
+import { r } from 'rethinkdb-ts';
 
 const pool = r.connectPool({
-    user: 'dev',
-    password: '',
-    host: 'driver.rethinkdb.insidethesandbox.studio',
-    port: 28015,
-    db: 'test',
-})
+  user:     'dev',
+  password: '',
+  host:     'driver.rethinkdb.insidethesandbox.studio',
+  port:     28015,
+  db:       'test',
+});
 
 /** get rethinkDB global connection pool {@see pool} */
-export function rethink_pool() {
-    return pool;
+export function rethink_pool(): typeof pool {
+  return pool;
 }
