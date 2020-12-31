@@ -1,5 +1,6 @@
 import { define, object, string } from "superstruct";
 
+/** Rethinkdb Pointype conpet with supersturct {@link https://rethinkdb.com/api/javascript/point} */
 const Location = define('Location', value => {
   return true
 })

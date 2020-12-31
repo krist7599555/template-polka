@@ -1,17 +1,17 @@
 import { endpoint, register_endpoint } from "../../endpoint";
 
-export const get = endpoint({
-    method: "GET",
-    async handler() {
-        return {
-            message: 'ok'
-        }
+const get = endpoint({
+  method: "GET",
+  async handler() {
+    return {
+      message: 'ok'
     }
+  }
 })
 
 register_endpoint({
-    pattern: '/schools',
-    methods: {
-        GET: get
-    }
+  pattern: '/schools',
+  methods: {
+    GET: get
+  }
 })

@@ -1,4 +1,3 @@
-import { r } from "rethinkdb-ts";
 import { object, string } from "superstruct"
 import { endpoint, register_endpoint } from "../../endpoint"
 import { SchoolsSchame } from "../../database/schema";
@@ -7,7 +6,7 @@ const PARAMS = object({
   school_id: string(),
 })
 
-export const get = endpoint({
+const get = endpoint({
   method: "GET",
   params: PARAMS,
   async handler(o) {
@@ -17,7 +16,7 @@ export const get = endpoint({
   }
 });
 
-export const post = endpoint({
+const post = endpoint({
   method: "POST",
   params: PARAMS,
   body: SchoolsSchame,

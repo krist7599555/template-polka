@@ -1,7 +1,7 @@
 import { Middleware } from 'polka'
 import { r } from 'rethinkdb-ts'
 
-export const pool = r.connectPool({
+const pool = r.connectPool({
     user: 'dev',
     password: '',
     host: 'driver.rethinkdb.insidethesandbox.studio',
@@ -9,9 +9,7 @@ export const pool = r.connectPool({
     db: 'test',
 })
 
-export function rethink_pool(): Middleware {
-    return async (req, res, next) => {
-        await pool;
-        next();
-    }
+/** get rethinkDB global connection pool {@see pool} */
+export function rethink_pool() {
+    return pool;
 }
