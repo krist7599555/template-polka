@@ -10,8 +10,8 @@ const get = endpoint({
 });
 
 register_endpoint({
-  pattern:'/users',
-  methods:{
+  pattern: '/users',
+  methods: {
     GET: get,
   },
 });

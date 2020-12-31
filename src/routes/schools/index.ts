@@ -10,8 +10,8 @@ const get = endpoint({
 });
 
 register_endpoint({
-  pattern:'/schools',
-  methods:{
+  pattern: '/schools',
+  methods: {
     GET: get,
   },
 });

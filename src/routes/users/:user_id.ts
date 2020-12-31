@@ -31,7 +31,7 @@ const post = endpoint({
 register_endpoint({
   pattern: "/users/:user_id",
   methods: {
-    GET:     get,
+    GET:  get,
     POST: post,
   },
 });
