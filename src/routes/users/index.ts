@@ -10,7 +10,7 @@ const get = endpoint({
 });
 
 register_endpoint({
-  pattern:'/schools',
+  pattern:'/users',
   methods:{
     GET: get,
   },
