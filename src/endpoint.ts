@@ -45,6 +45,7 @@ export function register_endpoint(opt: {
   methods: Partial<{ [k in HTTPMethod]: Function }>
 }) {
   for (const [meth, handler] of toPairs(opt.methods)) {
+    console.log('>', meth.padEnd(5), opt.pattern)
     api.add(meth as HTTPMethod, opt.pattern, handler as any)
   }
 }

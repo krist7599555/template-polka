@@ -1,10 +1,7 @@
-import { routes } from "./routes_register"
-console.log("🚀 ~ file: main.ts ~ line 2 ~ routes", routes)
 import polka from 'polka';
 import { json } from 'body-parser';
-import * as glob from 'glob';
-import * as path from 'path';
 import api from "./endpoint";
+import { rethink_pool } from './database/connection';
 
 const app = polka({
   onError(err, req, res, next) {
@@ -18,8 +15,11 @@ const app = polka({
 })
 
 app
+  .use(rethink_pool())
   .use(json())
   .use("/", api)
+
+app
   .listen(3000, err => {
     if (err) throw err;
     console.log(`> Running on http://0.0.0.0:3000`);

@@ -12,7 +12,7 @@ export const get = endpoint({
   params: PARAMS,
   async handler(o) {
     return {
-      mesage: 'ok'
+      mesage: 'ok 1234'
     }
   }
 });
