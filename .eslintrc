@@ -15,11 +15,12 @@
     "keyword-spacing": ["warn", { "before": true, "after": true }],
     "comma-dangle": ["warn", {
       "arrays": "never",
-      "objects": "always",
+      "objects": "always-multiline",
       "imports": "never",
       "exports": "never",
       "functions": "never"
     }],
+    "quotes": ["error", "single"],
     "brace-style": ["warn", "1tbs", { "allowSingleLine": true }],
     "semi-spacing": ["warn", {"before": false, "after": true}],
     "block-spacing": ["warn", "always"],

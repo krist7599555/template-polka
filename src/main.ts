@@ -2,7 +2,7 @@ import { json } from 'body-parser';
 import polka from 'polka';
 
 import { rethink_pool } from './database/connection';
-import api from "./endpoint";
+import api from './endpoint';
 import { wait_promise_to_resolve } from './middleware';
 
 const BASE_URL = process.env.BASE_URL ?? '/';

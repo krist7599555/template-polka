@@ -1,7 +1,7 @@
-import { endpoint, register_endpoint } from "../endpoint";
+import { endpoint, register_endpoint } from '../endpoint';
 
 const get = endpoint({
-  method: "GET",
+  method: 'GET',
   async handler() {
     return {
       message:  'wellcome to เรือจ้าง api',

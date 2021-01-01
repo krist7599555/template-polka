@@ -29,21 +29,21 @@ export function endpoint<
     query?: Query,
     body?: Body,
     handler: (args: {
-      params: Params["TYPE"],
-      query: Query["TYPE"],
-      body: Body["TYPE"]
+      params: Params['TYPE'],
+      query: Query['TYPE'],
+      body: Body['TYPE']
     }) => void
   }
-): Polka["handler"] {
+): Polka['handler'] {
   return async (req, res): Promise<void> => {
     // validate parameter
     const params = options.params ? create(req.params, options.params) : req.params as never;
-    const query = options.query && req.search ? create(qs.parse(req.search), options.query) : { ...req.query, } as never;
+    const query = options.query && req.search ? create(qs.parse(req.search), options.query) : { ...req.query } as never;
     // @ts-ignore
     const body = options.body && req.body ? create(req.body, options.body) : (req.body ?? {} as never);
     // handle
-    const result = await options.handler({ params, query, body, });
-    res.writeHead(200, { 'Content-Type': 'application/json', });
+    const result = await options.handler({ params, query, body });
+    res.writeHead(200, { 'Content-Type': 'application/json' });
     res.end(JSON.stringify(result));
   };
 }
@@ -63,8 +63,8 @@ export function register_endpoint(opt: {
   }
 }
 
-import "./routes/schools/:school_id";
-import "./routes/schools/index";
-import "./routes/index";
+import './routes/schools/:school_id';
+import './routes/schools/index';
+import './routes/index';
 
 export default api;

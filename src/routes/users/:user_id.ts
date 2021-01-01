@@ -1,14 +1,15 @@
-import { object, string } from "superstruct";
+import { defaults } from 'lodash';
+import { object, string } from 'superstruct';
 
-import { SchoolsSchame } from "../../database/schema";
-import { endpoint, register_endpoint } from "../../endpoint";
+import { SchoolsSchame } from '../../database/schema';
+import { endpoint, register_endpoint } from '../../endpoint';
 
 const PARAMS = object({
-  school_id: string(),
+  user_id: string(),
 });
 
 const get = endpoint({
-  method: "GET",
+  method: 'GET',
   params: PARAMS,
   async handler() {
     return {
@@ -18,10 +19,13 @@ const get = endpoint({
 });
 
 const post = endpoint({
-  method: "POST",
+  method: 'POST',
   params: PARAMS,
-  body:   SchoolsSchame,
-  async handler() {
+  body:   defaults(SchoolsSchame, {
+    id: () => '7777',
+  }),
+  async handler({ params, body }) {
+    console.log(params, body);
     return {
       mesage: 'ok',
     };
@@ -29,7 +33,7 @@ const post = endpoint({
 });
 
 register_endpoint({
-  pattern: "/users/:user_id",
+  pattern: '/users/:user_id',
   methods: {
     GET:  get,
     POST: post,

@@ -1,14 +1,14 @@
-import { object, string } from "superstruct";
+import { object, string } from 'superstruct';
 
-import { SchoolsSchame } from "../../database/schema";
-import { endpoint, register_endpoint } from "../../endpoint";
+import { SchoolsSchame } from '../../database/schema';
+import { endpoint, register_endpoint } from '../../endpoint';
 
 const PARAMS = object({
   school_id: string(),
 });
 
 const get = endpoint({
-  method: "GET",
+  method: 'GET',
   params: PARAMS,
   async handler() {
     return {
@@ -18,7 +18,7 @@ const get = endpoint({
 });
 
 const post = endpoint({
-  method: "POST",
+  method: 'POST',
   params: PARAMS,
   body:   SchoolsSchame,
   async handler() {
@@ -29,7 +29,7 @@ const post = endpoint({
 });
 
 register_endpoint({
-  pattern: "/schools/:school_id",
+  pattern: '/schools/:school_id',
   methods: {
     GET:  get,
     POST: post,

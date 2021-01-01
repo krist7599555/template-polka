@@ -1,0 +1,8 @@
+{
+    "recommendations": [
+        "dbaeumer.vscode-eslint",
+        "editorconfig.editorconfig",
+        "ms-vscode.vscode-typescript-next",
+        "gruntfuggly.todo-tree"
+    ]
+}
