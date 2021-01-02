@@ -1,22 +1,21 @@
-import { array, boolean, date, define, enums, masked, max,min, number, object, optional, string } from 'superstruct';
+import { array, boolean, date, define, enums, masked, max,min, number, object, optional, refine, string } from 'superstruct';
 
 /** Rethinkdb Pointype conpet with supersturct {@link https://rethinkdb.com/api/javascript/point} */
 const Location = define<{ reql: '$Lacation', point: [number, number] }>('Location', value => { return value === value; });
-const Relation = define<string>('Relation', value => { return value === value; });
-const Url      = define<string>('Url', value => { return value === value; });
+const Relation = refine(string(), 'Relation', value => { return value === value; });
+const Url      = refine(string(), 'Url', value => { return value === value; });
 const Grade    = enums(<const>['ป. 1', 'ป. 2', 'ป. 3']);
 const Gender   = enums(<const>['male', 'female', 'none']);
 
 export const SchoolsSchame = masked(object({
-  id:                    string(),
-  title:                 string(),
-  location:              Location,
-  province:              string(),
-  date_of_establishment: optional(date()),
-  markdown:              string(),
-  link_website:          optional(Url),
-  link_facebook:         optional(Url),
-  link_googlemap:        optional(Url),
+  id:             string(),
+  title:          string(),
+  location:       Location,
+  province:       string(),
+  markdown:       string(),
+  link_website:   optional(Url),
+  link_facebook:  optional(Url),
+  link_googlemap: optional(Url),
 }));
 
 export const TeachersSchame = masked(object({
@@ -33,7 +32,7 @@ export const TeachersSchame = masked(object({
 export const UsersSchame = masked(object({
   id:        string(),
   name:      string(),
-  gender:    Gender,
+  gender:    optional(Gender),
   picture:   optional(Url),
   birthdate: optional(date()),
   created:   date(),
